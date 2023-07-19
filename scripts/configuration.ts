@@ -1,15 +1,19 @@
+import { BigNumber as BN, Contract } from 'ethers';
 import { ZERO_ADDRESS } from './consts';
-import { toWei } from './helper';
 import { SUPPORTED_CHAINS } from './types';
 
 export const NETWORK = SUPPORTED_CHAINS.MAINNET;
 
+function toWei(num: number): BN {
+    return BN.from(Math.floor(10 ** 9 * num)).mul(10 ** 9);
+}
+
 export const MarketConfiguration = {
     name: 'SY swETH',
     symbol: 'SY-swETH',
-    expiry: 1750896000,
-    scalarRoot: toWei(112.2782),
-    initialRateAnchor: toWei(1.08711),
+    expiry: 1735171200,
+    scalarRoot: toWei(71.97937327930477),
+    initialRateAnchor: toWei(1.0585445078279005),
     doCacheIndex: true,
 };
 
