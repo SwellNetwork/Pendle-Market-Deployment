@@ -1,20 +1,23 @@
-import { BigNumber as BN, Contract } from 'ethers';
 import { ZERO_ADDRESS } from './consts';
-import { SUPPORTED_CHAINS } from './types';
+import { toWei } from './helper';
+import { calculateParameters } from './param-helper';
 
-export const NETWORK = SUPPORTED_CHAINS.MAINNET;
-
-function toWei(num: number): BN {
-    return BN.from(Math.floor(10 ** 9 * num)).mul(10 ** 9);
-}
+/**
+ * @dev The following parameters are used to calculate the market deployment params
+ * @minApy and @maxApy are the minimum and maximum APY of the interest bearing asset
+ * @startTimestamp and @endTimestamp are the start and end time of the market
+ */
+const minApy = 0.01; // 1%
+const maxApy = 0.05; // 5%
+const startTimestamp = 1689206400;
+const endTimestamp = 1750896000;
 
 export const MarketConfiguration = {
     name: 'SY swETH',
     symbol: 'SY-swETH',
-    expiry: 1735171200,
-    scalarRoot: toWei(71.97937327930477),
-    initialRateAnchor: toWei(1.0585445078279005),
     doCacheIndex: true,
+    expiry: endTimestamp,
+    ...calculateParameters(minApy, maxApy, startTimestamp, endTimestamp),
 };
 
 // address(0) is native

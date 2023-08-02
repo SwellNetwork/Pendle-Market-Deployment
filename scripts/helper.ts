@@ -9,7 +9,14 @@ import bnbConfiguration from '@pendle/core-v2/deployments/56-core.json';
 import { PendleContracts, SUPPORTED_CHAINS } from './types';
 import { IERC20, IPAllAction, PendleMarketFactory, PendleYieldContractFactory } from '../typechain-types';
 import { INF } from './consts';
-import { NETWORK } from './configuration';
+
+export function getNetwork() {
+    return {
+        [1]: SUPPORTED_CHAINS.MAINNET,
+        [56]: SUPPORTED_CHAINS.BSC,
+        [42161]: SUPPORTED_CHAINS.ARBITRUM,
+    }[hre.network.config.chainId!]!;
+}
 
 export function toWei(num: number): BN {
     return BN.from(Math.floor(10 ** 9 * num)).mul(10 ** 9);
@@ -37,6 +44,13 @@ export async function verifyContract(contract: string, constructor: any[]) {
     }
 }
 
+/**
+ *
+ * @param deployer signer for deployer
+ * @param abiType abi type (contract name)
+ * @param args constructor arguments
+ * @returns the contract itself with specified type
+ */
 export async function deploy<CType extends Contract>(deployer: SignerWithAddress, abiType: string, args: any[]) {
     console.log(`Deploying ${abiType}...`);
     const contractFactory = await hre.ethers.getContractFactory(abiType);
@@ -61,7 +75,7 @@ export async function getPendleContracts(): Promise<PendleContracts> {
         [SUPPORTED_CHAINS.MAINNET]: ethereumConfiguration,
         [SUPPORTED_CHAINS.ARBITRUM]: arbitrumConfiguration,
         [SUPPORTED_CHAINS.BSC]: bnbConfiguration,
-    }[NETWORK];
+    }[getNetwork()];
 
     return {
         router: await getContractAt<IPAllAction>('IPAllAction', config.router),
