@@ -1,0 +1,12 @@
+{
+    "name": "SY swETH-BbAWeth_BalancerLP Aura",
+    "symbol": "SY-swETH-BbAWeth_BalancerLP Aura",
+    "doCacheIndex": true,
+    "expiry": 1727308800,
+    "scalarRoot": "72904875026000000000",
+    "initialRateAnchor": "1034844758000000000",
+    "SY": "0xcb6Ea7fddFdf2AFc2Bc6Bf715185A33F8E27B96b",
+    "PT": "0x2CDB89969A8C206624C1173D1da3284B26dcB03d",
+    "YT": "0xb655B156816DD7bA76D99435db845E5E55B2bF49",
+    "market": "0xcF756c00A755172bDC073787Ea83817603dA42eF"
+}

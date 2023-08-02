@@ -1,10 +1,10 @@
 import { getContractAt } from './helper';
-import marketAddresses from '../deployments/SY-swETH.json';
-import { SwETHSY } from '../typechain-types';
+import marketAddresses from '../deployments/SY-swETH-BbAWeth_BalancerLP Aura.json';
+import { AuraSwEthBbAWethSYV2 } from '../typechain-types';
 import { PENDLE_MULTISIG } from './consts';
 
 async function main() {
-    const SY = await getContractAt<SwETHSY>('SwETHSY', marketAddresses.SY);
+    const SY = await getContractAt<AuraSwEthBbAWethSYV2>('AuraSwEthBbAWethSYV2', marketAddresses.SY);
 
     console.log('Transferring ownership to: ', PENDLE_MULTISIG);
 

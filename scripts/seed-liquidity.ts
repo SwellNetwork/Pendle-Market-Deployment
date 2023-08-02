@@ -3,7 +3,7 @@ import { delay, getContractAt, getPendleContracts, safeApproveInf } from './help
 import { SUPPORTED_CHAINS } from './types';
 import { INF, SAFE_WAIT_TIME, ZERO_ADDRESS } from './consts';
 import { AMOUNT_TO_SEED, UNDERLYING_TO_SEED_LIQUIDITY } from './configuration';
-import marketAddresses from '../deployments/SY-swETH.json';
+import marketAddresses from '../deployments/SY-swETH-BbAWeth_BalancerLP Aura.json';
 import { IERC20, IStandardizedYield } from '../typechain-types';
 
 async function main() {

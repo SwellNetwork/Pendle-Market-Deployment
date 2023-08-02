@@ -7,14 +7,14 @@ import { calculateParameters } from './param-helper';
  * @minApy and @maxApy are the minimum and maximum APY of the interest bearing asset
  * @startTimestamp and @endTimestamp are the start and end time of the market
  */
-const minApy = 0.01; // 1%
-const maxApy = 0.05; // 5%
-const startTimestamp = 1689206400;
-const endTimestamp = 1750896000;
+const minApy = 0.0; // 0%
+const maxApy = 0.06; // 6%
+const startTimestamp = 1690848000;
+const endTimestamp = 1727308800;
 
 export const MarketConfiguration = {
-    name: 'SY swETH',
-    symbol: 'SY-swETH',
+    name: 'SY swETH-BbAWeth_BalancerLP Aura',
+    symbol: 'SY-swETH-BbAWeth_BalancerLP Aura',
     doCacheIndex: true,
     expiry: endTimestamp,
     ...calculateParameters(minApy, maxApy, startTimestamp, endTimestamp),
